@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiểm tra độ mạnh của mật khẩu</title>
+  <style>
+    body
+  </style>
+</head>
+<body>
+<h1>Kiểm tra độ mạnh của mật khẩu</h1>
+<input type="password" id="password" placeholder="Nhập mật khẩu">
+<p id="strength">Kiểm tra độ mạnh của mật khẩu</p>
+<script>
+  document.getElementById('password').addEventListener('keyup', function() {
+    const password = this.value;
+    const result = document.getElementById('strength');
+
+    if (password.length === 0) {
+      result.innerText = "Nhập mật khẩu để kiểm tra";
+      result.className = "strength";return;
+    }
+
+    if (password.length < 6) {
+      result.innerText = "Mật khẩu yếu";
+    } else if (password.length >= 6 && password.length <= 9) {
+      result.innerText = "Mật khẩu trung bình";
+    } else if (password.length >= 10) {
+        result.innerText = "Mật khẩu mạnh";
+      }
+
+  });
+</script>
+</body>
+</html>
