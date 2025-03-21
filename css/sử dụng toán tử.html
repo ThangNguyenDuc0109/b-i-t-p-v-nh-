@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>sử dụng toán tử</title>
+</head>
+<body>
+<h1>Tính diện tích hình chữ nhật</h1>
+<form id="areaForm">
+  <h1>Tính diện tích hình chữ nhật</h1>
+  <form id="areaForm">
+    <label for="width">Chiều rộng:</label>
+    <input type="number" id="width" required><br><br>
+    <label for="height">Chiều cao:</label>
+    <input type="number" id="height" required><br><br>
+    <button type="button" onclick="calculateArea()">Tính diện tích</button>
+  </form>
+<p id="result"></p>
+<script src="script.js"></script>
+<script>
+  function calculateArea() {
+    // Lấy giá trị từ input người dùng
+    const width = document.getElementById('width').value;
+    const height = document.getElementById('height').value;
+
+    // Kiểm tra đầu vào
+    if (width > 0 && height > 0) {
+      const area = width * height; // Tính diện tích
+      document.getElementById('result').textContent = `Diện tích hình chữ nhật là: ${area}`;
+    } else {
+      document.getElementById('result').textContent = 'Vui lòng nhập chiều rộng và chiều cao hợp lệ.';
+    }
+  }
+</script>
+</body>
+</html>
+

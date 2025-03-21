@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiểm tra Năm Nhuận</title>
 </head>
 <body>
-$END$
+<h1>Kiểm tra Năm Nhuận</h1>
+<form id="leapYearForm">
+  <label for="year">Nhập năm:</label>
+  <input type="number" id="year" name="year" required>
+  <button type="button" onclick="checkLeapYear()">Kiểm tra</button>
+</form>
+<p id="result"></p>
+
+<script>
+  function checkLeapYear() {
+    const year = document.getElementById('year').value;
+    const result = document.getElementById('result');
+
+    if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+      result.textContent = `${year} là năm nhuận.`;
+    } else {
+      result.textContent = `${year} không phải là năm nhuận.`;
+    }
+  }
+</script>
 </body>
 </html>

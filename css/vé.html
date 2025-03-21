@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiểm tra loại vé</title>
+<body>
+<h1>Kiểm tra loại vé</h1>
+<label for="ageInput">Nhập tuổi của bạn:</label>
+<input type="number" id="ageInput" placeholder="Nhập tuổi">
+<button onclick="checkTicket()">Kiểm tra</button>
+  <script>
+    function checkTicket() {
+      const age = parseInt(document.getElementById("ageInput").value);
+      let result = "";
+
+      if (isNaN(age) || age < 0) {
+        result = "Vui lòng nhập một tuổi hợp lệ.";
+      } else if (age < 6) {
+        result = "Miễn phí";
+      } else if (age <= 18) {
+        result = "Vé trẻ em";
+      } else if (age <= 60) {
+        result = "Vé người lớn";
+      } else if (age >= 60) {
+        result = "Vé người cao tuổi";
+      }
+
+      document.getElementById("result").textContent = result;
+    }
+  </script>
+</head>
+<p id="result"></p>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tính Lương Nhân Viên</title>
+</head>
+<body>
+<h1>Tính Lương Nhân Viên</h1>
+<form>
+  <label for="nam">Số năm làm việc:</label>
+  <input type="number" id="nam" placeholder="Nhập số năm làm việc"><br><br>
+
+  <label for="calamviec">Ca làm việc:</label>
+  <select id="calamviec">
+    <option value="sang">Ca sáng</option>
+    <option value="chieu">Ca chiều</option>
+    <option value="dem">Ca đêm</option>
+  </select><br><br>
+
+  <label for="gio">Tổng số giờ làm:</label>
+  <input type="number" id="gio" placeholder="Nhập số giờ làm"><br><br>
+
+  <button type="button" onclick="tinhLuong()">Tính Lương</button>
+</form>
+<h3>Kết Quả:</h3>
+<p id="result"></p>
+
+<script>
+  function tinhLuong() {
+    const nam = Number(document.getElementById('nam').value);
+    const calamviec = document.getElementById('calamviec').value;
+    const gio = Number(document.getElementById('gio').value);
+
+    let luongGio = 0;
+    let tongLuong = 0;
+    let phuCap = 0;
+
+    // Xác định lương cơ bản theo ca làm việc
+    if (calamviec === "sang") {
+      luongGio = 50000;
+    } else if (calamviec === "chieu") {
+      luongGio = 55000;
+    } else if (calamviec === "dem") {
+      luongGio = 70000;
+    } else {
+      document.getElementById('result').textContent = "Ca làm việc không hợp lệ!";
+      return;
+    }
+
+    // Tính tổng lương cơ bản
+    if (gio > 8) {
+      const gioVuot = gio - 8; // Số giờ vượt quá
+      tongLuong = (8 * luongGio) + (gioVuot * luongGio * 1.2); // Giờ vượt tính thêm 20%
+    } else {
+      tongLuong = gio * luongGio;
+    }
+
+    if (nam >= 1 && nam <= 3) {
+      phuCap = tongLuong * 0.05; // Phụ cấp 5%
+    } else if (nam > 3) {
+      phuCap = tongLuong * 0.10; // Phụ cấp 10%
+    }
+
+    // Tổng lương = Lương cơ bản + Phụ cấp
+    tongLuong += phuCap;
+
+    // Hiển thị kết quả
+    document.getElementById('result').textContent = `Tổng lương của nhân viên là: ${tongLuong.toLocaleString('vi-VN')} VNĐ.`;
+  }
+</script>
+</body>
+</html>

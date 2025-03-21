@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tìm giá trị lớn nhất</title>
+</head>
+<body>
+<h1>Tìm giá trị lớn nhất trong dãy số</h1>
+<label for="numbers">Nhập dãy số, cách nhau bởi dấu phẩy:</label>
+<input type="text" id="numbers" placeholder="Ví dụ: 3,5,1,9,2">
+<button onclick="findMax()">Tìm giá trị lớn nhất</button>
+<h2>Kết quả: <span id="result"></span></h2>
+
+<script>
+  function findMax() {
+    // Lấy dữ liệu từ ô nhập
+    const input = document.getElementById("numbers").value;
+    // Tách dãy số thành mảng
+    const array = input.split(',').map(Number);
+
+    // Kiểm tra nếu dữ liệu đầu vào hợp lệ
+    if (array.length === 0 || array.some(isNaN)) {
+      alert("Vui lòng nhập dãy số hợp lệ!");
+      return;
+    }
+
+    // Giả sử phần tử đầu tiên là lớn nhất
+    let max = array[0];
+
+    // Lặp qua các phần tử để tìm giá trị lớn nhất
+    for (let i = 1; i < array.length; i++) {
+      if (array[i] > max) {
+        max = array[i];
+      }
+    }
+
+    // Hiển thị kết quả
+    document.getElementById("result").innerText = max;
+  }
+</script>
+</body>
+</html>
